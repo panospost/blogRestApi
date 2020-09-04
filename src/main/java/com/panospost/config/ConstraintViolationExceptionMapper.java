@@ -25,8 +25,6 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
             String message = constraintViolation.getMessage();
 
             objectBuilder.add(property, message);
-
-//            myViolationMap.put(property, message);
         }
 
         errorBuilder.add("violatedFields", objectBuilder.build());

@@ -1,5 +1,6 @@
 package com.panospost.service;
 
+import com.panospost.user.control.UserQueryService;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.apache.shiro.codec.Hex;
@@ -26,7 +27,7 @@ public class SecurityUtil {
 
 
     @Inject
-    private QueryService queryService;
+    private UserQueryService queryService;
 
     private SecretKey secretKey;
 
@@ -38,11 +39,6 @@ public class SecurityUtil {
 
     public Key generateKey() {
         return secretKey;
-
-
-        //TODO bring this up to good security practices
-//        return new SecretKeySpec(keyString.getBytes(), 0, keyString.getBytes().length, "DES");
-
     }
 
     public boolean authenticateUser(String email, String password) {

@@ -1,6 +1,5 @@
 package com.panospost.config;
 
-import com.panospost.service.MySession;
 import com.panospost.service.SecurityUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -38,9 +37,6 @@ public class SecurityFilter implements ContainerRequestFilter {
     @Inject
     private SecurityUtil securityUtil;
 
-    @Inject
-    private MySession mySession;
-
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -72,7 +68,6 @@ public class SecurityFilter implements ContainerRequestFilter {
         try {
 
             Key key = securityUtil.generateKey();
-//            Jwts.parser().setSigningKey(key).parse(token);
 
             Jws<Claims> claimsJws = Jwts.parser().setSigningKey(key).parseClaimsJws(token);
 
@@ -83,13 +78,7 @@ public class SecurityFilter implements ContainerRequestFilter {
 
                 @Override
                 public Principal getUserPrincipal() {
-                    return new Principal() {
-                        @Override
-                        public String getName() {
-                            return claimsJws.getBody().getSubject();
-
-                        }
-                    };
+                    return () -> claimsJws.getBody().getSubject();
                 }
 
                 @Override
