@@ -1,0 +1,20 @@
+
+R	java:S125"<This block of commented-out lines of code should be removed.(§±¹á
+M
+java:S1135U"2Complete the task associated to this TODO comment.(³†é—úÿÿÿÿ
+œ
+java:S11861"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(şñÊëÿÿÿÿÿ
+x
+java:S1488f"bImmediately return this expression instead of assigning it to the temporary variable "resultList".(¨›¦é
+a
+java:S1192;"FDefine a constant instead of duplicating this literal "email" 6 times.(ˆÒ¦òùÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(¼şıÿÿÿÿ
+I
+java:S1135"2Complete the task associated to this TODO comment.(§±¹á
+R	java:S125¥"<This block of commented-out lines of code should be removed.(§±¹á
+I
+java:S1135¥"2Complete the task associated to this TODO comment.(§±¹á
+G
+java:S11356"2Complete the task associated to this TODO comment.(Şİ„&
+[
+java:S1128">Remove this unused import 'javax.persistence.PersistenceUnit'.(ÖŠÌû8ÆŒŒ²Å.

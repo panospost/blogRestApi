@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SGAblog:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>SGAblog</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="SGAblog.war">
+      <element id="artifact" artifact-name="SGAblog:war exploded" />
+    </root>
+  </artifact>
+</component>
