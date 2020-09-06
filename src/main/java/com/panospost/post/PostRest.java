@@ -1,6 +1,7 @@
 package com.panospost.post;
 
 import com.panospost.common.AbstractEntity;
+import com.panospost.config.SecureAuth;
 import com.panospost.post.control.PostPersistenceService;
 import com.panospost.post.entity.Post;
 
@@ -21,6 +22,7 @@ public class PostRest extends AbstractEntity {
 
     @Path("create")
     @POST
+    @SecureAuth
     public Response createPost(@NotNull @Valid Post post) {
 
         return Response.ok( persistenceService.create(post)).build();
@@ -28,6 +30,7 @@ public class PostRest extends AbstractEntity {
 
     @Path("update")
     @POST
+    @SecureAuth
     public Response update(@NotNull @Valid Post post) {
 
 
@@ -38,6 +41,7 @@ public class PostRest extends AbstractEntity {
 
     @Path("update/{id}/{categoryId}")
     @POST
+    @SecureAuth
     public Response addNewCategoryToPost(@NotNull @PathParam("id") Long id, @NotNull @PathParam("id") Long categoryId) {
 
        return Response.ok(persistenceService.addNewCategoryToPost(id, categoryId))
@@ -46,6 +50,7 @@ public class PostRest extends AbstractEntity {
 
     @Path("remove/{id}/{categoryId}")
     @DELETE
+    @SecureAuth
     public Response removeCategoryFromPost(@NotNull @PathParam("id") Long id, @NotNull @PathParam("id") Long categoryId) {
 
         return Response.ok( persistenceService.removeCategoryFromPost(id, categoryId))
@@ -54,6 +59,7 @@ public class PostRest extends AbstractEntity {
 
     @Path("delete/{id}")
     @DELETE
+    @SecureAuth
     public Response deletePost(@NotNull @PathParam("id") Long id) {
 
 

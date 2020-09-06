@@ -1,6 +1,5 @@
 package com.panospost.post.entity;
 
-import com.panospost.blog.entity.Blog;
 import com.panospost.category.entity.Category;
 import com.panospost.common.AbstractEntity;
 import com.panospost.user.entity.User;

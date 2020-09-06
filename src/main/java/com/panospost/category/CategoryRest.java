@@ -5,6 +5,8 @@ import com.panospost.blog.entity.Blog;
 import com.panospost.category.control.CategoryPersistenceService;
 import com.panospost.category.control.CategoryQueryService;
 import com.panospost.category.entity.Category;
+import com.panospost.config.SecureAuth;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -28,6 +30,7 @@ public class CategoryRest {
 
     @Path("create")
     @POST
+    @SecureAuth
     public Response createCategory(@NotNull @Valid Category category) {
 
         categoryPersistenceService.saveCategory(category);
@@ -37,6 +40,7 @@ public class CategoryRest {
 
     @Path("/{id}/{blogId}")
     @POST
+    @SecureAuth
     public Response createCategory(@NotNull @PathParam("id") Long id, @PathParam("blogId") Long blogId) {
 
 
