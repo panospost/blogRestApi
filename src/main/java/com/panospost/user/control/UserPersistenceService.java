@@ -1,5 +1,6 @@
 package com.panospost.user.control;
 
+import com.panospost.blog.entity.Blog;
 import com.panospost.service.SecurityUtil;
 import com.panospost.user.entity.User;
 
@@ -45,6 +46,7 @@ public class UserPersistenceService {
             user.setSalt(credentialMap.get("salt"));
 
             entityManager.persist(user); //#save}
+            createBlogForUser(user);
         }
         credentialMap.clear();
 
@@ -82,7 +84,14 @@ public class UserPersistenceService {
         }
 
         return null;
+    }
 
+    private void createBlogForUser(User user) {
+        Blog blog = new Blog();
+        blog.setBlogOwner(user);
+        blog.setBlogTitle(user.getFullName() + "' s blog");
 
+        entityManager.persist(blog);
+        return;
     }
 }

@@ -1,4 +1,4 @@
-package com.panospost.blog;
+package com.panospost.blog.entity;
 
 import com.panospost.common.AbstractEntity;
 import com.panospost.user.entity.User;
@@ -9,8 +9,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "blog")
-//@NamedQuery(name = Blog.FIND_ALL_BLOGS, query = "select * from Blog todo where blog.todoOwner.email = :email")
+@NamedQueries({
+        @NamedQuery(name = Blog.FIND_BLOG_OF_USER, query = "select blog from Blog blog where blog.blogOwner.id = :email"),
+        @NamedQuery(name = Blog.FIND_ALL_BLOGS, query = "select blog from Blog  blog order by blog.blogTitle"),
+      })
 public class Blog extends AbstractEntity {
+    public static final String FIND_BLOG_OF_USER = "Blog.findBlogOfUser";
     public static final String FIND_ALL_BLOGS = "Blog.findAll";
 
     @NotEmpty(message = "A Blog name must be set")
@@ -19,14 +23,6 @@ public class Blog extends AbstractEntity {
 
     @OneToOne
     private User blogOwner;
-
-    public User getTodoOwner() {
-        return blogOwner;
-    }
-
-    public void setTodoOwner(User blogOwner) {
-        this.blogOwner = blogOwner;
-    }
 
     public String getBlogTitle() {
         return blogTitle;

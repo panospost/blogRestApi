@@ -19,8 +19,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-//Change 1
-
 
 @ApplicationScoped
 public class SecurityUtil {

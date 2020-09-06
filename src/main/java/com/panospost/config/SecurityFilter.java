@@ -25,9 +25,9 @@ import java.util.logging.Logger;
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 
 
-@Provider //Register filter with JAX-RS runtime
-@SecureAuth //Bind SecureAuth annotation with this filter
-@Priority(Priorities.AUTHENTICATION) //Prioritise this filter above others as a security filter
+@Provider
+@SecureAuth
+@Priority(Priorities.AUTHENTICATION)
 public class SecurityFilter implements ContainerRequestFilter {
     public static final String BEARER = "Bearer";
 
@@ -40,12 +40,6 @@ public class SecurityFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        //Grab token from the header of the request using the AUTHORIZATION constant
-        //Throw an exception with a message if there's no token
-        //Parse the token
-        //If parsing succeeds, proceed
-        //Otherwise we throw an exception with message
-
 
         String authString = requestContext.getHeaderString(AUTHORIZATION);
 
@@ -59,12 +53,6 @@ public class SecurityFilter implements ContainerRequestFilter {
         }
 
         String token = authString.substring(BEARER.length()).trim();
-
-        //We need to instantiate a new SecurityContext object
-        //We need to pass the new SC object to the RC
-
-
-
         try {
 
             Key key = securityUtil.generateKey();
